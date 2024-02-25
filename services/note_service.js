@@ -39,6 +39,27 @@ class NoteService{
             throw err;
         }finally {
             await prisma.$disconnect();
+        }   //we use it to release ressources
+    }
+
+    static async deleterNote(userID,noteID){
+          try {
+
+            await prisma.note.delete({where:{
+                userId:{
+                    equals:userID
+                },
+                id:{
+                    equals:noteID
+                }
+                
+    
+            }})
+            
+          } catch (err) {
+            throw err
+          }finally {
+            await prisma.$disconnect();
         }
     }
 }

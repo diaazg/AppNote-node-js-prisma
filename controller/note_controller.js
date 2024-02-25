@@ -25,7 +25,7 @@ exports.getAll = async(req,res,next)=>{
 
 exports.userNotes = async(req,res,next)=>{
     try {
-           const userID = await req.query.userID;
+           const userID =  req.query.userID;
            const userNotes = await NoteService.userNotes(userID);
            res.json({status:true,succes:"Successfully",body:userNotes});
 
@@ -34,5 +34,19 @@ exports.userNotes = async(req,res,next)=>{
 
         throw err;
         
+    }
+}
+
+exports.deleteNote = async(req,res,next)=>{
+    try {
+        
+        const userID =  req.query.userID;
+        const noteID =  req.query.noteID;
+        const deleteNote = await NoteService.deleteNote(userID,noteID);
+        res.json({status:true,succes:"Deleted Successfully"});
+
+
+    } catch (err) {
+        throw err
     }
 }
