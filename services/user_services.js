@@ -40,12 +40,11 @@ class UserService{
         
         const secretKey = 'secretkey';
       
-        // Options for the sign function
+        
         const options = {
-          expiresIn: '1h', // Token expiration time
+          expiresIn: '1h', 
         };
-      
-        // Sign the token
+
         const token = jwt.sign(payload, secretKey, options);
       
         return token;
